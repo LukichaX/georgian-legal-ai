@@ -1,0 +1,25 @@
+# Python / Virtual Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment Variables (Secrets)
+.env
+
+# Local LLM & Embedding Models (GGUF)
+*.gguf
+models/
+
+# Local Databases & Vector Stores
+data/legal_database.db
+data/chroma_db/
+data/raw_html/
+data/processed_ast/
+
+# IDE files
+.idea/
+.vscode/
+*.log
