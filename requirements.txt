@@ -1,0 +1,16 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu124
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.9.0
+python-dotenv>=1.0.1
+requests>=2.32.0
+beautifulsoup4>=4.12.3
+numpy>=1.26.4
+chromadb>=0.5.15
+sentence-transformers>=3.2.0
+llama-cpp-python>=0.3.1
+langchain-core>=0.3.15
+langchain-google-genai>=2.0.4
+langgraph>=0.2.45

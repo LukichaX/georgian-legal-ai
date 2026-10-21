@@ -1,0 +1,27 @@
+# Environments & Secrets
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local Databases, Heavy Models & Logs
+data/
+models/
+logs/
+*.gguf
+*.db
+*.sqlite3
+cloudflared.exe
+
+# Frontend dependencies & build artifacts
+frontend/node_modules/
+frontend/dist/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+skills-lock.json
+structure.txt
