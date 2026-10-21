@@ -36,17 +36,17 @@ Designed specifically around **Georgian/Germanic Continental Legal Dogmatics**, 
 
 ```mermaid
 flowchart TD
-    User([User Query / Legal Case]) --> Server[FastAPI Server :8000]
-    Server --> HotSwap{Zero-Downtime Hot-Swap Engine}
-    HotSwap --> Agent[Stateful LangGraph Agent]
+    User(["User Query / Legal Case"]) --> Server["FastAPI Server (:8000)"]
+    Server --> HotSwap{"Zero-Downtime Hot-Swap Engine"}
+    HotSwap --> Agent["Stateful LangGraph Agent"]
 
     subgraph LangGraph ["Stateful LangGraph Pipeline (legal_agent.py)"]
-        RouterNode[1. Router & Multi-Query Decomposer\nCloud Gemini / Local GGUF]
-        RetrieverNode[2. Multi-Tier Hybrid Retriever]
-        ReuseContextNode[2b. Reuse Active Context\nFollow-up / Calculation]
-        GeneratorNode[3. Adaptive 3-Mode Generator\nContinental Legal Dogmatics]
-        GuardNode[4. Deterministic Citation Guard\nStrict [E1]-[E6] & Injection Shield]
-        MemoryNode[5. State & Memory Checkpointer\nLangGraph MemorySaver]
+        RouterNode["1. Router & Multi-Query Decomposer<br/>Cloud Gemini / Local GGUF"]
+        RetrieverNode["2. Multi-Tier Hybrid Retriever"]
+        ReuseContextNode["2b. Reuse Active Context<br/>Follow-up / Calculation"]
+        GeneratorNode["3. Adaptive 3-Mode Generator<br/>Continental Legal Dogmatics"]
+        GuardNode["4. Deterministic Citation Guard<br/>Strict Evidence (E1-E6) & Injection Shield"]
+        MemoryNode["5. State & Memory Checkpointer<br/>LangGraph MemorySaver"]
 
         RouterNode -->|hybrid_search / exact_lookup| RetrieverNode
         RouterNode -->|follow_up_existing| ReuseContextNode
@@ -59,12 +59,12 @@ flowchart TD
     end
 
     subgraph RetrievalEngine ["Modular Hybrid Retrieval Engine (hybrid_retriever.py)"]
-        Tier0[Tier 0: Deterministic SQL Article Lookup\n<1ms B-Tree Index]
-        Tier1A[Tier 1A: Sparse FTS5 Trigram BM25\nCustom Georgian Stemmer]
-        Tier1B[Tier 1B: Dense ChromaDB Cosine Search\nSingle-Pass Query Vectorization]
-        Tier1C[Tier 1C: Statutory Title & Breadcrumb Matcher\nHeader & Definitional Bonus]
-        RRF[Reciprocal Rank Fusion - RRF\nGlobal + Primary + Adjacent Codes]
-        Tier2[Tier 2: Cross-Encoder Reranker\nQwen/Qwen3-Reranker-0.6B FP16]
+        Tier0["Tier 0: Deterministic SQL Article Lookup<br/>Sub-millisecond B-Tree Index"]
+        Tier1A["Tier 1A: Sparse FTS5 Trigram BM25<br/>Custom Georgian Stemmer"]
+        Tier1B["Tier 1B: Dense ChromaDB Cosine Search<br/>Single-Pass Query Vectorization"]
+        Tier1C["Tier 1C: Statutory Title & Breadcrumb Matcher<br/>Header & Definitional Bonus"]
+        RRF["Reciprocal Rank Fusion (RRF)<br/>Global + Primary + Adjacent Codes"]
+        Tier2["Tier 2: Cross-Encoder Reranker<br/>Qwen/Qwen3-Reranker-0.6B FP16"]
 
         Tier0 -.-> RRF
         Tier1A --> RRF
@@ -73,9 +73,10 @@ flowchart TD
         RRF --> Tier2
     end
 
-    RetrieverNode <--> RetrievalEngine
-    GuardNode --> ClientResp([Verified Response + Evidence Pack])
-    MemoryNode --> Telemetry[(Telemetry Store\nSQLite + JSONL Logs)]
+    RetrieverNode --> Tier0 & Tier1A & Tier1B & Tier1C
+    Tier2 --> RetrieverNode
+    GuardNode --> ClientResp(["Verified Response + Evidence Pack"])
+    MemoryNode --> Telemetry[("Telemetry Store<br/>SQLite + JSONL Logs")]
 ```
 
 ---
